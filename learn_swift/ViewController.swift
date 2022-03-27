@@ -7,53 +7,42 @@
 
 import UIKit
 
-enum CurrentLight {
-    case red, yellow, green
-}
-
 class ViewController: UIViewController {
     
-    // MARK: - outlet
-    @IBOutlet var redLight: UIView!
-    @IBOutlet var yellowLight: UIView!
-    @IBOutlet var greenLight: UIView!
-    
-    @IBOutlet var startButton: UIButton!
-    
-    // MARK: - private
-    private var currentLight = CurrentLight.red
-    private let lightOn: CGFloat = 1
-    private let lightOff: CGFloat = 0.3
+    @IBOutlet var topSegments: UISegmentedControl!
+    @IBOutlet var mainTitle: UILabel!
+    @IBOutlet var datePicker: UIDatePicker!
     
     // MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillLayoutSubviews() {
-        redLight.layer.cornerRadius = redLight.frame.width / 2
-        yellowLight.layer.cornerRadius = redLight.frame.width / 2
-        greenLight.layer.cornerRadius = redLight.frame.width / 2
-    }
-    
-    // MARK: - IBActions
-    @IBAction func changeColor() {
-        startButton.setTitle("Next", for: .normal)
         
-        switch currentLight {
-        case .red:
-            greenLight.alpha = lightOff
-            redLight.alpha = lightOn
-            currentLight = .yellow
-        case .yellow:
-            redLight.alpha = lightOff
-            yellowLight.alpha = lightOn
-            currentLight = .green
-        case .green:
-            yellowLight.alpha = lightOff
-            greenLight.alpha = lightOn
-            currentLight = .red
-        }
+        topSegments.insertSegment(withTitle: "Fourth", at: 3, animated: true)
+        
+        mainTitle.font = mainTitle.font.withSize(30)
+        mainTitle.textAlignment = .center
+        mainTitle.numberOfLines = 2
+    }
+    
+    @IBAction func onChangeSegments() {
+        switch topSegments.selectedSegmentIndex {
+            case 0:
+                changeSegmentProps("First", .red)
+                
+            case 1:
+                changeSegmentProps("Second", .green)
+                
+            case 2:
+                changeSegmentProps("Third", .blue)
+                
+            default:
+                changeSegmentProps("Idk name of", .cyan, ":(")
+            }
+    }
+    
+    func changeSegmentProps(_ title: String, _ color: UIColor, _ additionalText: String? = "") {
+        mainTitle.text = "\(title) segment \(additionalText ?? "")"
+        mainTitle.textColor = color
     }
 }
 
