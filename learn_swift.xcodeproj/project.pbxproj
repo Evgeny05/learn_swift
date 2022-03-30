@@ -62,10 +62,10 @@
 				B71408CC27EB9BD8009EF995 /* SceneDelegate.swift */,
 				B71408CE27EB9BD8009EF995 /* ViewController.swift */,
 				B71408D027EB9BD8009EF995 /* Main.storyboard */,
+				B73FBF8E27F3A80300601979 /* InfoViewController.swift */,
 				B71408D327EB9BD9009EF995 /* Assets.xcassets */,
 				B71408D527EB9BD9009EF995 /* LaunchScreen.storyboard */,
 				B71408D827EB9BD9009EF995 /* Info.plist */,
-				B73FBF8E27F3A80300601979 /* InfoViewController.swift */,
 			);
 			path = learn_swift;
 			sourceTree = "<group>";
